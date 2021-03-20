@@ -18,10 +18,20 @@ public class CheckBoxesTest {
 
         driver.get("file:///Users/jhumbertoh/Proyectos/Publicos/projectg5-selenium-webdriver/webapp/checkboxes.html");
 
+
+        Boolean selected = false;
+
         WebElement checkbox = driver.findElement(By.id("lettuceCheckbox"));
+
         checkbox.click();
+        //selected = checkbox.isSelected();
+
         checkbox.click();
+        //selected = checkbox.isSelected();
+
         checkbox.click();
+        //selected = checkbox.isSelected();
+
         //checkbox.click();
 
         Assert.assertTrue("El checkbox no esta seleccionado",
