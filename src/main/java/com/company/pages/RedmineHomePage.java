@@ -22,5 +22,12 @@ public class RedmineHomePage extends RedmineLandingPage{
         return new RedmineProjectsPage(driver);
     }
 
+    public RedmineUserPage clickOnMenuAdministration(){
+
+        //Dar click en el menu administration
+
+        return  new RedmineUserPage(driver);
+    }
+
 
 }
