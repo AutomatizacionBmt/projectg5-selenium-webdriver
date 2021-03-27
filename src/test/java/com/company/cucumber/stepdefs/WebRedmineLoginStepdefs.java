@@ -1,8 +1,6 @@
 package com.company.cucumber.stepdefs;
 
-import com.company.base.BaseTest;
 import com.company.pages.RedmineHomePage;
-import com.company.pages.RedmineLandingPage;
 import com.company.pages.RedmineLoginPage;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
@@ -11,16 +9,19 @@ import org.junit.Assert;
 
 public class WebRedmineLoginStepdefs {
 
-    RedmineLandingPage redmineLandingPage;
+    BaseStepdefs baseStepdefs;
     RedmineLoginPage redmineLoginPage;
     RedmineHomePage redmineHomePage;
+
+    public WebRedmineLoginStepdefs(BaseStepdefs baseStepdefs){
+        this.baseStepdefs = baseStepdefs;
+    }
 
     @Dado("Yo voy a la pagina de login de Redmine")
     public void yoVoyALaPaginaDeLoginDeRedmine() {
 
         System.out.println("Yo voy a la pagina de login de Redmine");
-        redmineLandingPage = new RedmineLandingPage(BaseTest.getDriver());
-        redmineLoginPage = redmineLandingPage.clickLinkLogin();
+        redmineLoginPage = baseStepdefs.currentPage.clickLinkLogin();
 
     }
 
@@ -29,6 +30,7 @@ public class WebRedmineLoginStepdefs {
 
         System.out.println("Yo inicio sesion con mis credenciales user {string} y password {string}");
         redmineHomePage = redmineLoginPage.login(user, password);
+        baseStepdefs.currentPage = redmineHomePage;
     }
 
 
@@ -43,4 +45,7 @@ public class WebRedmineLoginStepdefs {
                 expectedUser,
                 actualUser);
     }
+
+
+
 }
