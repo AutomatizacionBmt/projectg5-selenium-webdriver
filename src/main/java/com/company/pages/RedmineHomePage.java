@@ -9,6 +9,8 @@ public class RedmineHomePage extends RedmineLandingPage{
 
     private By menuMyProjects = By.xpath("//a[@href='/projects']");
 
+    private By menuAdministration = By.xpath("//a[@href='/admin']");
+
     public RedmineHomePage(WebDriver driver) {
         super(driver);
     }
@@ -23,9 +25,7 @@ public class RedmineHomePage extends RedmineLandingPage{
     }
 
     public RedmineUserPage clickOnMenuAdministration(){
-
-        //Dar click en el menu administration
-
+        driver.findElement(menuAdministration).click();
         return  new RedmineUserPage(driver);
     }
 

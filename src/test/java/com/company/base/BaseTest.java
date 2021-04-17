@@ -19,7 +19,7 @@ public class BaseTest {
 
         driver = new ChromeDriver();
 
-        driver.get("http://198.211.98.120:8081/");
+        driver.get("http://8935fc85a347.ngrok.io");
         driver.manage().window().maximize();
 
         redmineLandingPage = new RedmineLandingPage(driver);
