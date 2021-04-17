@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class RedmineUserPage extends RedmineLandingPage{
 
 
@@ -25,6 +27,8 @@ public class RedmineUserPage extends RedmineLandingPage{
 
     private By btnCreateUser = By.name("commit");
     private By lblUIMessage = By.id("flash_notice");
+
+    private By linkDeleteUser = By.linkText("Delete");
 
 
     public RedmineUserPage(WebDriver driver) {
@@ -64,5 +68,45 @@ public class RedmineUserPage extends RedmineLandingPage{
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(lblUIMessage));
         return driver.findElement(lblUIMessage).getText();
+    }
+
+    public void clickLinkDeleteUser(String userName){
+
+        List<WebElement> userList = driver.findElement(By.tagName("table"))
+                .findElement(By.tagName("tbody"))
+                .findElements(By.tagName("tr"));
+
+        for (WebElement userRow: userList){
+            String userNameRow = userRow.findElements(By.tagName("td")).get(0).getText();
+            if(userName.equals(userNameRow)){
+                userRow.findElements(By.tagName("td")).get(7)
+                        .findElement(linkDeleteUser)
+                        .click();
+                break;
+            }
+        }
+    }
+
+    public void removeUser(){
+        driver.switchTo().alert().accept();
+    }
+
+    public void doNotRemoveUser(){
+        driver.switchTo().alert().dismiss();
+    }
+
+    public Boolean userIsOnList(String userName) {
+
+        List<WebElement> userList = driver.findElement(By.tagName("table"))
+                .findElement(By.tagName("tbody"))
+                .findElements(By.tagName("tr"));
+
+        for (WebElement userRow: userList){
+            String userNameRow = userRow.findElements(By.tagName("td")).get(0).getText();
+            if(userName.equals(userNameRow)){
+                return true;
+            }
+        }
+        return false;
     }
 }
