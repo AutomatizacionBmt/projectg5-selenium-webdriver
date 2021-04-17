@@ -4,7 +4,9 @@ import com.company.models.RedmineUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RedmineUserPage extends RedmineLandingPage{
 
@@ -57,6 +59,10 @@ public class RedmineUserPage extends RedmineLandingPage{
     }
 
     public String getUIMessageCreateUser(){
+
+        //Explicit Wait
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(lblUIMessage));
         return driver.findElement(lblUIMessage).getText();
     }
 }
