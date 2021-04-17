@@ -47,5 +47,11 @@ public class WebRedmineLoginStepdefs {
     }
 
 
+    @Cuando("Yo inicio sesion con mis credenciales user {string} y password {string} y presiono enter")
+    public void yoInicioSesionConMisCredencialesUserYPasswordYPresionoEnter(String user, String password) {
 
+        System.out.println("Yo inicio sesion con mis credenciales user {string} y password {string} y presiono enter");
+        redmineHomePage = redmineLoginPage.loginWithEnter(user, password);
+        baseStepdefs.currentPage = redmineHomePage;
+    }
 }

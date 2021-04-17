@@ -15,5 +15,12 @@
     Entonces Yo deberia visualizar en la pagina de inicio mi usuario "user"
 
 
+    @gui @Working
+    Escenario: Iniciar sesión satisfactoriamente en Redmine presionando enter
+      Dado Yo voy a la pagina de login de Redmine
+      Cuando Yo inicio sesion con mis credenciales user "user" y password "bitnami1" y presiono enter
+      Entonces Yo deberia visualizar en la pagina de inicio mi usuario "user"
+
+
 
 
