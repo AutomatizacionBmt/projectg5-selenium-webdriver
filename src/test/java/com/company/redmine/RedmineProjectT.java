@@ -9,7 +9,7 @@ import com.company.utils.AppUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RedmineProjectTest extends BaseTest {
+public class RedmineProjectT extends BaseTest {
 
     @Test
     public void testCreateProject() {

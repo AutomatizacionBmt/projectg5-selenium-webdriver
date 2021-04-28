@@ -6,7 +6,7 @@ import com.company.pages.RedmineLoginPage;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RedmineLoginTest extends BaseTest {
+public class RedmineLoginT extends BaseTest {
 
 
     @Test

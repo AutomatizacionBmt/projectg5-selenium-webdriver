@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class SelectItemTest {
+public class SelectItemT {
 
     @Test
-    public void usingSelectTest() {
+    public void usingSelectT() {
 
         System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriver");
 

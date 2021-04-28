@@ -1,13 +1,18 @@
 package com.company.base;
 
 import com.company.pages.RedmineLandingPage;
+import com.company.utils.Urls;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -23,7 +28,7 @@ public class BaseTest {
         String browserName = System.getenv("browserName");
         browserName = (browserName == null) ? "chrome" : browserName.toLowerCase();
 
-        switch (browserName){
+        switch (browserName) {
             case "firefox":
                 setFirefoxDriverProperty();
                 break;
@@ -34,56 +39,92 @@ public class BaseTest {
                 setChromeDriverProperty();
                 break;
             default:
-                throw new IllegalStateException("The browserName " +browserName+ " option is not present");
+                throw new IllegalStateException("The browserName " + browserName + " option is not present");
         }
 
         //Implicit Wait
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        driver.get("http://8935fc85a347.ngrok.io");
+        driver.get(Urls.REDMINE_URL_LOCAL);
         driver.manage().window().maximize();
 
         redmineLandingPage = new RedmineLandingPage(driver);
     }
 
     @AfterClass
-    public static void tearDown(){
+    public static void tearDown() {
         driver.quit();
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
 
-    public static void setChromeDriverProperty(){
+    public static void setChromeDriverProperty() {
 
-        if(System.getProperty("os.name").toLowerCase().contains("windows")){
+        /*if(System.getProperty("os.name").toLowerCase().contains("windows")){
             System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriver.exe");
         }else if(System.getProperty("os.name").toLowerCase().contains("mac")){
             System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriver");
         }else{
             System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriverlinux");
+        }*/
+
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+
+
+        try {
+            URL hubUrl = new URL(Urls.SELENIUM_GRID_URL);
+
+            driver = new RemoteWebDriver(hubUrl, capabilities);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
 
-        driver = new ChromeDriver();
+
+        //driver = new ChromeDriver();
     }
 
-    public static void setFirefoxDriverProperty(){
+    public static void setFirefoxDriverProperty() {
 
-        if(System.getProperty("os.name").toLowerCase().contains("windows")){
+        /*if (System.getProperty("os.name").toLowerCase().contains("windows")) {
             System.setProperty("webdriver.gecko.driver", "resources/drivers/firefox/geckodriver.exe");
-        }else if(System.getProperty("os.name").toLowerCase().contains("mac")){
+        } else if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             System.setProperty("webdriver.gecko.driver", "resources/drivers/firefox/geckodriver");
-        }else{
+        } else {
             System.setProperty("webdriver.gecko.driver", "resources/drivers/firefox/geckodriverlinux");
         }
 
-        driver = new FirefoxDriver();
+        driver = new FirefoxDriver();*/
+
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+
+        try {
+            URL hubUrl = new URL(Urls.SELENIUM_GRID_URL);
+
+            driver = new RemoteWebDriver(hubUrl, capabilities);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    private static void setSafariDriverProperty(){
+    private static void setSafariDriverProperty() {
 
-        driver = new SafariDriver();
+        DesiredCapabilities capabilities = DesiredCapabilities.safari();
+
+        try {
+            URL hubUrl = new URL(Urls.SELENIUM_GRID_URL);
+
+            driver = new RemoteWebDriver(hubUrl, capabilities);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        //driver = new SafariDriver();
 
     }
 }

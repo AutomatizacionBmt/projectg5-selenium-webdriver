@@ -4,7 +4,7 @@ Característica: Web UI Redmine Projects
   Como usuario,
   Yo deseo crear un Proyecto en Redmine
 
-  @gui @Working
+  @gui @Workings
   Escenario: Crear un proyecto satisfactoriamente
     Dado Yo voy a la pagina de login de Redmine
     Y Yo inicio sesion con mis credenciales user "user" y password "bitnami1"

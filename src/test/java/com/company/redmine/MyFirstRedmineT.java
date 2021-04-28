@@ -8,11 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class MyFirstRedmineTest {
+public class MyFirstRedmineT {
 
 
     @Test
-    public void myFirstTest(){
+    public void myFirstT(){
 
         //Para Windows
         //System.setProperty("webdriver.chrome.driver","resources/drivers/chrome/chromedriver.exe");
@@ -39,7 +39,7 @@ public class MyFirstRedmineTest {
     }
 
     @Test
-    public void loginRedmineTest(){
+    public void loginRedmineT(){
 
         System.setProperty("webdriver.chrome.driver","resources/drivers/chrome/chromedriver");
 

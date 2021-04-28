@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class RadioButtonsTest {
+public class RadioButtonsT {
 
     @Test
     public void choosingRadioButton(){

@@ -4,7 +4,7 @@ Característica: Web UI - Redmine - Users
   Como usuario admin,
   Yo deseo crear un nuevo usuario
 
-  @gui @Working
+  @gui @Workings
   Escenario: Crear un nuevo usuario satisfactoriamente
     Dado Yo voy a la pagina de login de Redmine
     Y Yo inicio sesion con mis credenciales user "user" y password "bitnami1"
@@ -19,7 +19,7 @@ Característica: Web UI - Redmine - Users
       | password      | 12345678          |
     Entonces El usuario se registro satisfactoriamente
 
-  @gui @Working
+  @gui @Workings
   Escenario: Crear un nuevo usuario y eliminarlo
     Dado Yo voy a la pagina de login de Redmine
     Y Yo inicio sesion con mis credenciales user "user" y password "bitnami1"
@@ -36,7 +36,7 @@ Característica: Web UI - Redmine - Users
     Cuando Yo elimino el usuario de la lista de usuarios
     Entonces El usuario no deberia visualizarce en la lista usuarios
 
-  @gui @Working
+  @gui @Workings
   Escenario: Crear un nuevo usuario y no eliminarlo
     Dado Yo voy a la pagina de login de Redmine
     Y Yo inicio sesion con mis credenciales user "user" y password "bitnami1"
