@@ -40,7 +40,7 @@ public class BaseTest {
         //Implicit Wait
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        driver.get("http://8935fc85a347.ngrok.io");
+        driver.get("http://47f453d6c51e.ngrok.io");
         driver.manage().window().maximize();
 
         redmineLandingPage = new RedmineLandingPage(driver);
